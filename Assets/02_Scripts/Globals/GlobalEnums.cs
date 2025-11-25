@@ -6,11 +6,22 @@ namespace Globals
     public enum PageType
     {
         NONE = 0,
+
+        // Title
+        TITLE = 100,
+
+        // Game
+
     }
 
     public enum PopupType
     {
         NONE = 0,
+
+        // Title
+
+        // Game
+
     }
     #endregion
 

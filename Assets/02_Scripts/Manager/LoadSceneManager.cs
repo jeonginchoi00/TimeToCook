@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class LoadSceneManager : MonoBehaviour
 {
     private static LoadSceneManager m_instance;
-    public static LoadSceneManager GetInstacne() => m_instance;
+    public static LoadSceneManager GetInstance() => m_instance;
 
     private string m_currentScene;
     public string CurrentScene => m_currentScene;

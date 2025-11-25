@@ -54,6 +54,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pageType: 0
+  m_startBtn: {fileID: 2461409708198805454}
+  m_quitBtn: {fileID: 1596078875749816926}
+  m_titleImg: {fileID: 1259011422971824730}
 --- !u!1 &418736087680316612
 GameObject:
   m_ObjectHideFlags: 0
