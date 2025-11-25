@@ -13,4 +13,11 @@ namespace Globals
         NONE = 0,
     }
     #endregion
+
+    #region Sound
+    public enum SoundType
+    {
+        NONE = 0,
+    }
+    #endregion
 }
