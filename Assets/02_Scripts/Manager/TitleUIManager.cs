@@ -30,6 +30,13 @@ public class TitleUIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Initialize();
+
+        SetCurrentPage(PageType.TITLE);
+    }
+
     public void Initialize()
     {
         // 페이지 초기화
