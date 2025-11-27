@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Cabinet_Function : BaseCabinet
+public class Cabinet_Stove : BaseCabinet
 {
     public override void Interact(PlayerBase _player)
     {
-        Debug.Log("기능 캐비넷");
+        Debug.Log("굽기 캐비넷");
     }
 }
