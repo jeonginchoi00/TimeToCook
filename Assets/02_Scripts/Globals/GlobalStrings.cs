@@ -19,4 +19,9 @@ namespace Globals
         public const string ISWALK = "IsWalk";
         public const string ISRUN = "IsRun";
     }
+
+    public static class Tag
+    {
+        public const string PLAYER = "PLAYER";
+    }
 }

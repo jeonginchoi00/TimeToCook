@@ -7,6 +7,8 @@ public class PlayerBase : MonoBehaviour
     private float m_speed = 5f;
     private float m_dashSpeed = 10f;
 
+    private IInteractable m_currentTarget;
+
     public virtual void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -15,6 +17,7 @@ public class PlayerBase : MonoBehaviour
     public virtual void Update()
     {
         Move();
+        HandleInteraction();
     }
 
     public virtual void Move()
@@ -45,6 +48,34 @@ public class PlayerBase : MonoBehaviour
         {
             m_animator.SetBool(AnimKey.ISRUN, false);
             m_animator.SetBool(AnimKey.ISWALK, false);
+        }
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null)
+        {
+            m_currentTarget = interactable;
+        }
+    }
+
+    public virtual void OnTriggerExit(Collider other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null && interactable == m_currentTarget)
+        {
+            m_currentTarget = null;
+        }
+    }
+
+    public virtual void HandleInteraction()
+    {
+        if (m_currentTarget != null && Input.GetKeyDown(KeyCode.Space))
+        {
+            m_currentTarget.Interact(GetComponent<PlayerBase>());
         }
     }
 }
