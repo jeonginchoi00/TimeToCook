@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4780950550655648969}
   - component: {fileID: 6309455104540937070}
   - component: {fileID: 1182275716867520712}
+  - component: {fileID: -1457518402101478406}
   m_Layer: 0
   m_Name: Beef_Raw
   m_TagString: Untagged
@@ -58,6 +59,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,3 +87,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1457518402101478406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902271098695974524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc54b34e580a7e49a69cb8d7073a000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
