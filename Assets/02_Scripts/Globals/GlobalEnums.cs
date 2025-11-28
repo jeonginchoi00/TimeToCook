@@ -2,6 +2,19 @@ using UnityEngine;
 
 namespace Globals
 {
+    #region Game
+    public enum Ingredient
+    {
+        TOMATO = 0,
+        LETTUCE = 1,
+        BEEF = 2,
+        GROUNDBEEF = 3,
+        BUN_TOP = 4,
+        BUN_BOTTOM = 5,
+        CHEESE = 6,
+    }
+    #endregion
+
     #region UI
     public enum PageType
     {

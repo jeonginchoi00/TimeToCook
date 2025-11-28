@@ -9,6 +9,9 @@ public class PlayerBase : MonoBehaviour
 
     private IInteractable m_currentTarget;
 
+    [SerializeField] private Transform m_hand;
+    private GameObject m_heldItem;
+
     public virtual void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -73,9 +76,79 @@ public class PlayerBase : MonoBehaviour
 
     public virtual void HandleInteraction()
     {
-        if (m_currentTarget != null && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_currentTarget.Interact(GetComponent<PlayerBase>());
+            if (HasItem())
+            {
+                if (m_currentTarget is BaseCabinet cabinet)
+                {
+                    if (cabinet.GetPlacedItem() != null)
+                    {
+                        return;
+                    }
+
+                    Transform dropPoint = cabinet.GetDropPoint();
+
+                    if (dropPoint != null)
+                    {
+                        m_heldItem.transform.SetParent(null);
+                        m_heldItem.transform.position = dropPoint.position;
+                        m_heldItem.transform.rotation = dropPoint.rotation;
+
+                        cabinet.SetPlacedItem(m_heldItem);
+
+                        m_heldItem = null;
+                    }
+                }
+
+                return;
+            }
+
+            if (m_currentTarget is BaseCabinet cab)
+            {
+                GameObject placed = cab.GetPlacedItem();
+
+                if (placed != null)
+                {
+                    placed.transform.SetParent(m_hand);
+                    placed.transform.localPosition = Vector3.zero;
+
+                    m_heldItem = placed;
+
+                    cab.SetPlacedItem(null);
+
+                    return;
+                }
+            }
+
+            if (m_currentTarget != null)
+            {
+                m_currentTarget.Interact(this);
+            }
         }
+    }
+
+    public Transform GetHandTransform()
+    {
+        return m_hand;
+    }
+
+    public void PickUp(GameObject _item)
+    {
+        m_heldItem = _item;
+    }
+
+    public void DropItem()
+    {
+        if (m_heldItem != null)
+        {
+            m_heldItem.transform.SetParent(null);
+            m_heldItem = null;
+        }
+    }
+
+    public bool HasItem()
+    {
+        return m_heldItem != null;
     }
 }

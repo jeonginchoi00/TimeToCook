@@ -9,6 +9,9 @@ public abstract class BaseCabinet : MonoBehaviour, IInteractable
     private Color[] m_originColors;
     private Color m_whiteColor = Color.gray;
 
+    [SerializeField] protected Transform m_dropPoint;
+    protected GameObject m_placedItem;
+
     protected virtual void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
@@ -53,5 +56,20 @@ public abstract class BaseCabinet : MonoBehaviour, IInteractable
             m_renderers[i].material.SetColor("_EmissionColor", m_originColors[i]);
             DynamicGI.SetEmissive(m_renderers[i], m_originColors[i]);
         }
+    }
+
+    public Transform GetDropPoint()
+    {
+        return m_dropPoint;
+    }
+
+    public GameObject GetPlacedItem()
+    {
+        return m_placedItem;
+    }
+
+    public void SetPlacedItem(GameObject item)
+    {
+        m_placedItem = item;
     }
 }
